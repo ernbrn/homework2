@@ -1,9 +1,7 @@
 # this program will crush the user's dreams
 class Game
-  @win = false
-
-  def user_input
-    print 'Hey dummy, pick a number. You get 5 guesses. -> '
+  def user_input(num)
+    print "Hey dummy, pick a number. You get #{num} guesses. -> "
     @guess = gets.chomp.to_f
   end
 
@@ -13,24 +11,27 @@ class Game
   end
 
   def compare_nums
-    if @guess != @rando_num
-      print "Hahaha, I knew you were dumb. The number is #{@rando_num}\n\n"
-  else
-    puts 'Dang, you got it right this time. Lucky guess.'
-    @win = true
+    if @guess > @rando_num
+      print "Your guess is too high, and I'm not suprised.\n\n"
+  elsif @guess < @rando_num
+      print "Your guess is too low, just like your IQ. \n\n"
+  elsif @win == true
+      print "Ok, you got it this time. It was a lucky guess. \n"
     end
   end
 
   def play_game
+    @win = false
+    generate_number
+
     counter = 5
     while counter > 0 && @win != true
-      user_input
-      generate_number
+      user_input(counter)
       compare_nums
       counter -= 1
     end
 
-    print "Game Over! You are not a Wizard.\n\n" if @win != true
+    print "Game Over! You are not a Wizard.\nThe number was #{@rando_num}\n" if @win == false
   end
 end
 
