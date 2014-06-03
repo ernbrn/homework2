@@ -15,7 +15,8 @@ class Game
       print "Your guess is too high, and I'm not suprised.\n\n"
   elsif @guess < @rando_num
       print "Your guess is too low, just like your IQ. \n\n"
-  elsif @win == true
+  elsif @guess == @rando_num
+      @win = true
       print "Ok, you got it this time. It was a lucky guess. \n"
     end
   end
@@ -31,7 +32,8 @@ class Game
       counter -= 1
     end
 
-    print "Game Over! You are not a Wizard.\nThe number was #{@rando_num}\n" if @win == false
+    print "Game Over! You are not a Wizard.\n
+    The number was #{@rando_num}\n" if @win == false
   end
 end
 
